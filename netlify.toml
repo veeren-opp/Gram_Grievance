@@ -1,0 +1,9 @@
+[build]
+  publish = "dist"
+  command = "npm run build"
+
+[[redirects]]
+  from = "/"
+  to = "/citizen/index.html"
+  status = 302
+  force = true

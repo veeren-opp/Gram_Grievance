@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Officer Registration — GramSetu Admin | XYZ Gram Panchayat</title>
+  <link rel="stylesheet" href="/admin/css/style.css">
+</head>
+<body data-admin-page="register">
+  <div class="gov-strip"></div>
+
+  <header class="admin-header">
+    <div class="admin-header-container">
+      <div class="admin-brand">
+        <span style="font-weight: 800; font-size: 1.2rem; letter-spacing: -0.02em;">GramSetu</span>
+        <span class="admin-badge">Officer Enrollment</span>
+      </div>
+      <div style="display: flex; gap: 12px; align-items: center;">
+        <a href="/admin/index.html" style="color: #cbd5e1; font-size: 0.85rem; text-decoration: none;">
+          Existing Officer Login →
+        </a>
+        <span style="color: #475569;">|</span>
+        <a href="/citizen/index.html" style="color: #94a3b8; font-size: 0.85rem; text-decoration: none;">
+          Citizen Portal
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <div id="adminHealthBanner" style="display: none;"></div>
+
+  <main class="admin-main" style="max-width: 580px; margin-top: 30px;">
+    <div class="card" style="border-top: 4px solid var(--primary-dark);">
+      <div style="text-align: center; margin-bottom: 24px;">
+        <div style="font-size: 2.2rem; margin-bottom: 6px;">🏛️</div>
+        <h2 style="font-size: 1.45rem; font-weight: 700; color: var(--text-main);">Panchayat Officer Registration</h2>
+        <p style="font-size: 0.85rem; color: var(--text-light); margin-top: 4px;">
+          Create authorized administrator account for XYZ Gram Panchayat, Buldhana
+        </p>
+      </div>
+
+      <!-- Pre-assigned Location Box -->
+      <div style="background: #f8fafc; border: 1px solid var(--border); border-radius: var(--radius-md); padding: 12px 16px; margin-bottom: 20px;">
+        <span style="font-size: 0.72rem; text-transform: uppercase; font-weight: 700; color: var(--text-light); letter-spacing: 0.05em; display: block; margin-bottom: 4px;">
+          Assigned Administrative Jurisdiction
+        </span>
+        <div style="font-size: 0.9rem; font-weight: 700; color: var(--primary-dark);">
+          XYZ Gram Panchayat • Buldhana District • Maharashtra
+        </div>
+      </div>
+
+      <div id="adminRegisterAlert" class="alert alert-danger" style="display: none;"></div>
+
+      <form id="adminRegisterForm">
+        <!-- Officer Full Name -->
+        <div class="form-group">
+          <label class="form-label" for="adminFullName">Officer Full Name <span style="color: var(--danger);">*</span></label>
+          <input type="text" id="adminFullName" name="fullName" class="form-control" placeholder="e.g. Balasaheb Gaikwad" required autocomplete="name">
+        </div>
+
+        <!-- Official Designation -->
+        <div class="form-group">
+          <label class="form-label" for="adminDesignation">Official Panchayat Designation <span style="color: var(--danger);">*</span></label>
+          <select id="adminDesignation" name="designation" class="form-control" required>
+            <option value="Sarpanch">Sarpanch (Panchayat Head)</option>
+            <option value="Up-Sarpanch">Up-Sarpanch (Deputy Head)</option>
+            <option value="Gram Sevak" selected>Gram Sevak / Panchayat Secretary</option>
+            <option value="Village Development Officer">Village Development Officer (VDO)</option>
+            <option value="Junior Civil Engineer">Junior Civil Engineer (Public Works)</option>
+            <option value="Water Supply In-charge">Water Supply In-charge</option>
+            <option value="Sanitation Inspector">Sanitation & Health Inspector</option>
+            <option value="Panchayat Clerk">Panchayat Clerk / Data Operator</option>
+          </select>
+        </div>
+
+        <!-- Official Mobile -->
+        <div class="form-group">
+          <label class="form-label" for="adminMobile">Official Mobile Number (10 Digits) <span style="color: var(--danger);">*</span></label>
+          <input type="tel" id="adminMobile" name="mobile" class="form-control" placeholder="e.g. 9876543299" pattern="[6-9][0-9]{9}" maxlength="10" required autocomplete="tel">
+          <div style="font-size: 0.78rem; color: var(--text-light); margin-top: 4px;">
+            This number will be your official login identifier.
+          </div>
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+          <label class="form-label" for="adminEmail">Official Email Address <span style="font-size: 0.78rem; font-weight: normal; color: var(--text-light);">(Optional)</span></label>
+          <input type="email" id="adminEmail" name="email" class="form-control" placeholder="e.g. gramsevak.xyz@gov.in" autocomplete="email">
+        </div>
+
+        <!-- Administrative Authorization Key -->
+        <div class="form-group" style="background: #fefce8; padding: 12px; border: 1px solid #fef08a; border-radius: var(--radius-md);">
+          <label class="form-label" for="adminPasscode" style="color: #854d0e;">
+            Administrative Master Security Passcode <span style="color: var(--danger);">*</span>
+          </label>
+          <input type="password" id="adminPasscode" name="adminPasscode" class="form-control" placeholder="Enter master authorization passcode" required autocomplete="off">
+          <div style="font-size: 0.78rem; color: #a16207; margin-top: 4px;">
+            Security check: Required to authorize officer registration (Master Key: <code>GramSetu@2026</code>).
+          </div>
+        </div>
+
+        <!-- Personal Password -->
+        <div class="form-group">
+          <label class="form-label" for="adminPassword">Create Personal Admin Password <span style="color: var(--danger);">*</span></label>
+          <input type="password" id="adminPassword" name="password" class="form-control" placeholder="Minimum 6 characters" minlength="6" required autocomplete="new-password">
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="form-group">
+          <label class="form-label" for="adminConfirmPassword">Confirm Admin Password <span style="color: var(--danger);">*</span></label>
+          <input type="password" id="adminConfirmPassword" name="confirmPassword" class="form-control" placeholder="Re-enter password" minlength="6" required autocomplete="new-password">
+        </div>
+
+        <button type="submit" id="adminRegisterBtn" class="btn btn-primary btn-block" style="padding: 12px; margin-top: 10px;">
+          Register Panchayat Officer in MongoDB
+        </button>
+      </form>
+
+      <div style="margin-top: 20px; padding-top: 14px; border-top: 1px solid var(--border); font-size: 0.82rem; color: var(--text-muted); text-align: center;">
+        Already registered? <a href="/admin/index.html" style="color: var(--primary); font-weight: 600; text-decoration: none;">Sign in to Admin Console →</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="admin-footer" style="padding: 20px; text-align: center; margin-top: 40px;">
+    <div style="font-size: 0.78rem; color: #64748b;">
+      GramSetu Administration Network • XYZ Gram Panchayat, Buldhana, Maharashtra
+    </div>
+  </footer>
+
+  <script src="/admin/js/api.js"></script>
+  <script src="/admin/js/auth.js"></script>
+  <script src="/admin/js/app.js"></script>
+</body>
+</html>

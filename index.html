@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GramSetu — Digital Gram Panchayat Grievance Portal</title>
+    <meta name="description" content="Official digital grievance redressal portal for citizens and administration of XYZ Gram Panchayat, Buldhana, Maharashtra." />
+    <meta property="og:title" content="GramSetu — Digital Gram Panchayat Grievance Portal" />
+    <meta property="og:description" content="Official digital grievance redressal portal for citizens and administration of XYZ Gram Panchayat, Buldhana, Maharashtra." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta http-equiv="refresh" content="0; url=/citizen/index.html" />
+    <script>
+      // Immediately redirect to Citizen Portal on page load
+      (function() {
+        var isFile = window.location.protocol === 'file:' || !window.location.origin || window.location.origin === 'null';
+        var target = isFile ? './citizen/index.html' : '/citizen/index.html';
+        if (window.location.pathname === '/' || window.location.pathname.endsWith('index.html')) {
+          window.location.replace(target);
+        }
+      })();
+    </script>
+    <style>
+      body {
+        margin: 0;
+        font-family: system-ui, -apple-system, sans-serif;
+        background: #f8fafc;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+      }
+      .fallback-box {
+        text-align: center;
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        padding: 32px 24px;
+        max-width: 420px;
+        box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+      }
+      .btn {
+        display: inline-block;
+        margin-top: 16px;
+        background: #047857;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <div class="fallback-box">
+        <div style="font-size: 2rem; margin-bottom: 8px;">🌾</div>
+        <h2 style="margin: 0 0 8px; color: #047857;">GramSetu Portal</h2>
+        <p style="margin: 0 0 16px; color: #64748b; font-size: 0.9rem;">
+          XYZ Gram Panchayat Grievance Redressal Portal
+        </p>
+        <a href="/citizen/index.html" class="btn" id="portalBtn">Enter Citizen Portal</a>
+      </div>
+    </div>
+    <script>
+      if (window.location.protocol === 'file:') {
+        var btn = document.getElementById('portalBtn');
+        if (btn) btn.href = './citizen/index.html';
+      }
+    </script>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard — GramSetu | XYZ Gram Panchayat</title>
+  <link rel="stylesheet" href="/admin/css/style.css">
+</head>
+<body data-admin-page="dashboard">
+  <div class="gov-strip"></div>
+
+  <header class="admin-header">
+    <div class="admin-header-container">
+      <div class="admin-brand">
+        <span style="font-weight: 800; font-size: 1.2rem; letter-spacing: -0.02em;">GramSetu</span>
+        <span class="admin-badge">Admin Desk</span>
+      </div>
+
+      <nav>
+        <ul class="admin-nav">
+          <li><a href="/admin/dashboard.html" class="admin-nav-link active">Dashboard</a></li>
+          <li><a href="/admin/complaints.html" class="admin-nav-link">Complaints Ledger</a></li>
+          <li><a href="/admin/profile.html" class="admin-nav-link">Panchayat Office</a></li>
+          <li><button class="btn-admin-logout" id="adminLogoutBtn">Logout</button></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div id="adminHealthBanner" style="display: none;"></div>
+
+  <main class="admin-main">
+    <!-- Mandatory Read-Only Jurisdiction Header -->
+    <div class="admin-subbar">
+      <div>
+        <span class="loc-title">Administrative Jurisdiction:</span>
+        <span class="loc-val">XYZ Gram Panchayat, Buldhana District, Maharashtra</span>
+      </div>
+      <div style="font-size: 0.82rem; color: var(--text-light);">
+        Official Officer: <strong id="adminOfficerName" style="color: var(--text-main);">Administrator</strong>
+      </div>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
+      <div>
+        <h2 style="font-size: 1.5rem; font-weight: 700; color: var(--text-main);">Civic Grievance Dashboard</h2>
+        <p style="font-size: 0.88rem; color: var(--text-light);">Live metrics directly aggregated from MongoDB Atlas</p>
+      </div>
+      <div>
+        <a href="/admin/complaints.html" class="btn btn-primary">
+          Manage All Grievances →
+        </a>
+      </div>
+    </div>
+
+    <!-- Real MongoDB Aggregated Metric Cards -->
+    <div class="admin-stats-grid">
+      <div class="admin-stat-card total">
+        <div class="admin-stat-label">Total Registered</div>
+        <div class="admin-stat-num" id="statTotal">0</div>
+      </div>
+
+      <div class="admin-stat-card submitted">
+        <div class="admin-stat-label" style="color: var(--info);">Submitted</div>
+        <div class="admin-stat-num" id="statSubmitted">0</div>
+      </div>
+
+      <div class="admin-stat-card under-review">
+        <div class="admin-stat-label" style="color: var(--warning);">Under Review</div>
+        <div class="admin-stat-num" id="statUnderReview">0</div>
+      </div>
+
+      <div class="admin-stat-card in-progress">
+        <div class="admin-stat-label" style="color: var(--purple);">In Progress</div>
+        <div class="admin-stat-num" id="statInProgress">0</div>
+      </div>
+
+      <div class="admin-stat-card resolved">
+        <div class="admin-stat-label" style="color: var(--success);">Resolved</div>
+        <div class="admin-stat-num" id="statResolved">0</div>
+      </div>
+
+      <div class="admin-stat-card rejected">
+        <div class="admin-stat-label" style="color: var(--danger);">Rejected</div>
+        <div class="admin-stat-num" id="statRejected">0</div>
+      </div>
+    </div>
+
+    <!-- Recent Complaints Table -->
+    <div class="card" style="padding: 20px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+        <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--text-main);">Latest Registered Grievances</h3>
+        <a href="/admin/complaints.html" style="font-size: 0.85rem; color: var(--primary); font-weight: 600; text-decoration: none;">View Complete Registry →</a>
+      </div>
+
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Citizen Details</th>
+              <th>Complaint Title & Location</th>
+              <th>Category</th>
+              <th>Filed On</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="adminRecentTableBody">
+            <!-- Dynamically populated from MongoDB -->
+          </tbody>
+        </table>
+      </div>
+
+      <div id="adminDashboardEmptyState" style="text-align: center; padding: 40px; display: none;">
+        <p style="color: var(--text-muted);">No grievances currently filed in the system.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="admin-footer">
+    <div class="admin-footer-container">
+      <div>Office of Gram Panchayat Administration • XYZ Gram Panchayat, Buldhana, Maharashtra</div>
+      <div>Real-Time Mongoose Engine</div>
+    </div>
+  </footer>
+
+  <script src="/admin/js/api.js"></script>
+  <script src="/admin/js/auth.js"></script>
+  <script src="/admin/js/app.js"></script>
+</body>
+</html>

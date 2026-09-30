@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GramSetu — Digital Gram Panchayat Grievance Portal | XYZ Gram Panchayat</title>
+  <link rel="stylesheet" href="/citizen/css/style.css">
+</head>
+<body data-page="home">
+  <!-- Tricolor Ribbon Header -->
+  <div class="gov-strip"></div>
+
+  <!-- Civic Top Bar -->
+  <header class="civic-topbar">
+    <div class="location-tag">
+      <span>Official Portal:</span>
+      <span class="badge-loc">Maharashtra</span>
+      <span class="badge-loc">Buldhana</span>
+      <span class="badge-loc">XYZ Gram Panchayat</span>
+    </div>
+    <div style="font-size: 0.8rem; color: var(--text-light);">
+      Digital India • Gram Panchayat E-Governance
+    </div>
+  </header>
+
+  <!-- System Health Alert Banner (Appears if DB is offline) -->
+  <div id="systemHealthBanner" style="display: none;"></div>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="/citizen/index.html" class="brand-wrapper">
+        <div class="brand-emblem">GS</div>
+        <div class="brand-text">
+          <h1>GramSetu</h1>
+          <p>Digital Grievance Redressal Portal</p>
+        </div>
+      </a>
+
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation">☰</button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/citizen/index.html" class="nav-link active">Home</a></li>
+        <li id="navGuestLinks" style="display: flex; gap: 8px;">
+          <a href="/citizen/login.html" class="nav-link">Citizen Login</a>
+          <a href="/citizen/register.html" class="nav-link nav-btn">Citizen Register</a>
+        </li>
+        <li id="navAuthLinks" style="display: none; align-items: center; gap: 8px;">
+          <a href="/citizen/dashboard.html" class="nav-link">Dashboard</a>
+          <a href="/citizen/submit-complaint.html" class="nav-link">Submit Complaint</a>
+          <a href="/citizen/complaints.html" class="nav-link">My Complaints</a>
+          <a href="/citizen/profile.html" class="nav-link" id="navCitizenName">Profile</a>
+          <a href="#" class="nav-link btn-danger-outline" id="navLogoutBtn">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Mandatory Read-Only Location Banner -->
+    <div class="location-notice-card">
+      <div>
+        <div class="loc-title">Designated Panchayat Jurisdiction</div>
+        <div class="loc-values">
+          <span><strong>State:</strong> Maharashtra</span>
+          <span>•</span>
+          <span><strong>District:</strong> Buldhana</span>
+          <span>•</span>
+          <span><strong>Gram Panchayat:</strong> XYZ Gram Panchayat</span>
+        </div>
+      </div>
+      <div style="font-size: 0.82rem; color: var(--text-light);">
+        Single Jurisdiction Civic Service Portal
+      </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-content">
+        <span class="hero-badge">Direct Citizen Redressal</span>
+        <h2 class="hero-title">Transparent, Accountable Governance for Every Resident</h2>
+        <p class="hero-desc">
+          Lodge civic grievances directly with XYZ Gram Panchayat administration. Track updates in real-time backed by MongoDB and upload photo evidence through Cloudinary.
+        </p>
+        <div class="hero-actions">
+          <a id="homeCtaBtn" href="/citizen/register.html" class="btn btn-secondary">
+            Register Grievance Now →
+          </a>
+          <a href="/citizen/login.html" class="btn btn-outline" style="border-color: #ffffff; color: #ffffff;">
+            Citizen Login
+          </a>
+          <a href="/admin/index.html" class="btn btn-outline" style="border-color: rgba(255,255,255,0.4); color: rgba(255,255,255,0.9); font-size: 0.85rem;">
+            Panchayat Admin Portal →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section style="margin-bottom: 36px;">
+      <div class="page-header" style="margin-bottom: 20px;">
+        <h3 class="page-title" style="font-size: 1.4rem;">How GramSetu Works</h3>
+        <p class="page-subtitle">Simple 3-step digital redressal process</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+        <div class="card">
+          <div style="width: 36px; height: 36px; background: var(--primary-light); color: var(--primary); font-weight: 700; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; margin-bottom: 14px;">1</div>
+          <h4 style="margin-bottom: 8px;">Register with Mobile</h4>
+          <p style="font-size: 0.9rem; color: var(--text-muted);">
+            Sign up using your 10-digit mobile number and name. Your account is automatically tied to XYZ Gram Panchayat, Buldhana.
+          </p>
+        </div>
+
+        <div class="card">
+          <div style="width: 36px; height: 36px; background: var(--primary-light); color: var(--primary); font-weight: 700; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; margin-bottom: 14px;">2</div>
+          <h4 style="margin-bottom: 8px;">Upload Photo & Location</h4>
+          <p style="font-size: 0.9rem; color: var(--text-muted);">
+            Select category (Roads, Water, Electricity, Sanitation), describe the exact landmark, and attach a photo from your phone or camera.
+          </p>
+        </div>
+
+        <div class="card">
+          <div style="width: 36px; height: 36px; background: var(--primary-light); color: var(--primary); font-weight: 700; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; margin-bottom: 14px;">3</div>
+          <h4 style="margin-bottom: 8px;">Official Review & Resolution</h4>
+          <p style="font-size: 0.9rem; color: var(--text-muted);">
+            Panchayat officers examine the issue, update the status from Submitted to In Progress and Resolved, and attach remarks.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Categories Grid -->
+    <section>
+      <div class="page-header" style="margin-bottom: 20px;">
+        <h3 class="page-title" style="font-size: 1.4rem;">Supported Civic Categories</h3>
+        <p class="page-subtitle">Panchayat municipal departments ready for redressal</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px;">
+        <div class="card" style="padding: 16px; text-align: center;">
+          <div style="font-size: 1.5rem; margin-bottom: 4px;">🛣️</div>
+          <strong style="font-size: 0.9rem;">Roads</strong>
+        </div>
+        <div class="card" style="padding: 16px; text-align: center;">
+          <div style="font-size: 1.5rem; margin-bottom: 4px;">💡</div>
+          <strong style="font-size: 0.9rem;">Street Lights</strong>
+        </div>
+        <div class="card" style="padding: 16px; text-align: center;">
+          <div style="font-size: 1.5rem; margin-bottom: 4px;">🚰</div>
+          <strong style="font-size: 0.9rem;">Water Supply</strong>
+        </div>
+        <div class="card" style="padding: 16px; text-align: center;">
+          <div style="font-size: 1.5rem; margin-bottom: 4px;">🧼</div>
+          <strong style="font-size: 0.9rem;">Sanitation</strong>
+        </div>
+        <div class="card" style="padding: 16px; text-align: center;">
+          <div style="font-size: 1.5rem; margin-bottom: 4px;">🌊</div>
+          <strong style="font-size: 0.9rem;">Drainage</strong>
+        </div>
+        <div class="card" style="padding: 16px; text-align: center;">
+          <div style="font-size: 1.5rem; margin-bottom: 4px;">🗑️</div>
+          <strong style="font-size: 0.9rem;">Waste Management</strong>
+        </div>
+        <div class="card" style="padding: 16px; text-align: center;">
+          <div style="font-size: 1.5rem; margin-bottom: 4px;">⚡</div>
+          <strong style="font-size: 0.9rem;">Electricity</strong>
+        </div>
+        <div class="card" style="padding: 16px; text-align: center;">
+          <div style="font-size: 1.5rem; margin-bottom: 4px;">🏛️</div>
+          <strong style="font-size: 0.9rem;">Public Infrastructure</strong>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <h3>GramSetu — ग्रामसेतू</h3>
+        <p>Digital Gram Panchayat Grievance Redressal Portal. Serving the residents of XYZ Gram Panchayat, District Buldhana, Maharashtra.</p>
+      </div>
+      <div>
+        <h4 style="color: #ffffff; font-size: 0.95rem; margin-bottom: 8px;">Portal Links</h4>
+        <ul style="list-style: none; font-size: 0.88rem; line-height: 2;">
+          <li><a href="/citizen/index.html" style="color: #94a3b8; text-decoration: none;">Citizen Home</a></li>
+          <li><a href="/citizen/register.html" style="color: #94a3b8; text-decoration: none;">Citizen Registration</a></li>
+          <li><a href="/citizen/login.html" style="color: #94a3b8; text-decoration: none;">Citizen Login</a></li>
+          <li><a href="/admin/index.html" style="color: #cbd5e1; font-weight: 600; text-decoration: none;">Admin Portal (Official Access)</a></li>
+          <li><a href="/api/download/zip" download="gramsetu-panchayat-portal.zip" style="color: #4ade80; font-weight: 600; text-decoration: none;">📥 Download Project (.ZIP)</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 XYZ Gram Panchayat, Buldhana, Maharashtra. All rights reserved.</div>
+      <div>Full-Stack: Express • MongoDB Atlas • Cloudinary</div>
+    </div>
+  </footer>
+
+  <script src="/citizen/js/api.js"></script>
+  <script src="/citizen/js/auth.js"></script>
+  <script src="/citizen/js/app.js"></script>
+</body>
+</html>

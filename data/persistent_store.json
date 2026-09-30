@@ -1,0 +1,36 @@
+{
+  "users": [
+    {
+      "fullName": "Vikram Shinde",
+      "mobile": "9822334455",
+      "email": "vikram@example.com",
+      "passwordHash": "$2b$10$8sSqQCWDG8w8O5YFHZF0YuURLnLp50rQFLM55eF6NA59vmL3Io6n.",
+      "role": "citizen",
+      "designation": "Citizen Resident",
+      "state": "Maharashtra",
+      "district": "Buldhana",
+      "gramPanchayat": "XYZ Gram Panchayat",
+      "_id": "6abce4e6d0e4fb433c6f64fe",
+      "createdAt": "2026-09-30T10:31:02.296Z",
+      "updatedAt": "2026-09-30T10:31:02.296Z",
+      "__v": 0
+    },
+    {
+      "fullName": "Aakash Deshmukh",
+      "mobile": "9823456789",
+      "email": "aakash.deshmukh@example.com",
+      "passwordHash": "$2b$10$tyKiYrMy9t/mtWE/aH2LqujZlC99yhLg6isf4IwWlIRmzZaaxFbd2",
+      "role": "citizen",
+      "designation": "Citizen Resident",
+      "state": "Maharashtra",
+      "district": "Buldhana",
+      "gramPanchayat": "XYZ Gram Panchayat",
+      "_id": "6abcf071cd5c003757cbc474",
+      "createdAt": "2026-09-30T11:20:17.720Z",
+      "updatedAt": "2026-09-30T11:20:17.720Z",
+      "__v": 0
+    }
+  ],
+  "complaints": [],
+  "counters": []
+}

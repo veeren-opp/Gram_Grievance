@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Submit Grievance — GramSetu | XYZ Gram Panchayat</title>
+  <link rel="stylesheet" href="/citizen/css/style.css">
+</head>
+<body data-page="submit-complaint">
+  <div class="gov-strip"></div>
+
+  <header class="civic-topbar">
+    <div class="location-tag">
+      <span>Official Portal:</span>
+      <span class="badge-loc">Maharashtra</span>
+      <span class="badge-loc">Buldhana</span>
+      <span class="badge-loc">XYZ Gram Panchayat</span>
+    </div>
+    <div style="font-size: 0.8rem; color: var(--text-light);">
+      Grievance Submission Desk
+    </div>
+  </header>
+
+  <div id="systemHealthBanner" style="display: none;"></div>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="/citizen/dashboard.html" class="brand-wrapper">
+        <div class="brand-emblem">GS</div>
+        <div class="brand-text">
+          <h1>GramSetu</h1>
+          <p>Digital Grievance Redressal Portal</p>
+        </div>
+      </a>
+
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation">☰</button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/citizen/dashboard.html" class="nav-link">Dashboard</a></li>
+        <li><a href="/citizen/submit-complaint.html" class="nav-link active">Submit Complaint</a></li>
+        <li><a href="/citizen/complaints.html" class="nav-link">My Complaints</a></li>
+        <li><a href="/citizen/profile.html" class="nav-link" id="navCitizenName">Profile</a></li>
+        <li><a href="#" class="nav-link btn-danger-outline" id="navLogoutBtn">Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="main-content" style="max-width: 720px;">
+    <!-- Mandatory Read-Only Location Banner -->
+    <div class="location-notice-card">
+      <div>
+        <div class="loc-title">Jurisdiction for Grievance Redressal</div>
+        <div class="loc-values">
+          <span><strong>State:</strong> Maharashtra</span>
+          <span>•</span>
+          <span><strong>District:</strong> Buldhana</span>
+          <span>•</span>
+          <span><strong>Gram Panchayat:</strong> XYZ Gram Panchayat</span>
+        </div>
+      </div>
+      <div style="font-size: 0.82rem; color: var(--text-light);">
+        Associated automatically with your complaint
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="page-header" style="margin-bottom: 24px;">
+        <h2 class="page-title">Submit Civic Grievance</h2>
+        <p class="page-subtitle">File an official complaint to XYZ Gram Panchayat authorities</p>
+      </div>
+
+      <div id="submitAlert" class="alert alert-danger" style="display: none;"></div>
+
+      <form id="submitComplaintForm">
+        <!-- Title -->
+        <div class="form-group">
+          <label class="form-label" for="title">Complaint Title <span class="req">*</span></label>
+          <input type="text" id="title" name="title" class="form-control" placeholder="Brief summary of the issue (e.g. Broken water pipe near temple)" maxlength="150" required>
+        </div>
+
+        <!-- Category -->
+        <div class="form-group">
+          <label class="form-label" for="category">Grievance Category <span class="req">*</span></label>
+          <select id="category" name="category" class="form-control" required>
+            <option value="" disabled selected>-- Select Municipal Category --</option>
+            <option value="Roads">Roads (Potholes, Tar, Grading)</option>
+            <option value="Street Lights">Street Lights (Fused, Non-working, Dark spots)</option>
+            <option value="Water Supply">Water Supply (Pipelines, Valve, Pressure, Quality)</option>
+            <option value="Sanitation">Sanitation (Cleanliness, Public Toilets)</option>
+            <option value="Drainage">Drainage (Clogged gutters, Sewage overflow)</option>
+            <option value="Waste Management">Waste Management (Garbage collection, Dump disposal)</option>
+            <option value="Electricity">Electricity (Transformers, Low voltage, Hanging wires)</option>
+            <option value="Public Infrastructure">Public Infrastructure (Community halls, Bus stop, Schools)</option>
+            <option value="Other">Other Miscellaneous Civic Issue</option>
+          </select>
+        </div>
+
+        <!-- Exact Location / Landmark -->
+        <div class="form-group">
+          <label class="form-label" for="location">Exact Location / Landmark <span class="req">*</span></label>
+          <input type="text" id="location" name="location" class="form-control" placeholder="e.g. Near Z.P. School, Opp. Hanuman Temple, East Ward" required>
+          <div class="form-hint">Provide specific landmark so the Panchayat inspection team can locate it quickly.</div>
+        </div>
+
+        <!-- Description -->
+        <div class="form-group">
+          <label class="form-label" for="description">Detailed Description <span class="req">*</span></label>
+          <textarea id="description" name="description" class="form-control" rows="4" placeholder="Describe the duration, severity, and impact of the grievance on residents..." required></textarea>
+        </div>
+
+        <!-- Real Photo Upload with Cloudinary -->
+        <div class="form-group">
+          <label class="form-label">Photo Evidence <span style="font-size: 0.8rem; font-weight: normal; color: var(--text-light);">(Optional but recommended)</span></label>
+          
+          <div class="upload-area" id="uploadArea">
+            <div class="upload-icon">📷</div>
+            <strong style="color: var(--primary-dark); font-size: 0.95rem;">Click to upload or take a photo</strong>
+            <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 4px;">
+              Supports phone camera, gallery, or computer • JPG, PNG, WEBP (Max 5 MB)
+            </p>
+            <input type="file" id="photoInput" name="photo" accept="image/jpeg,image/jpg,image/png,image/webp" capture="environment" style="display: none;">
+            
+            <!-- Live Preview -->
+            <div class="upload-preview" id="uploadPreview">
+              <img id="previewImg" src="" alt="Selected Photo">
+              <button type="button" class="btn-remove-photo" id="removePhotoBtn">✕ Remove Photo</button>
+            </div>
+          </div>
+          <div class="form-hint">Photos are securely uploaded to Cloudinary CDN and accessible to Panchayat administrators.</div>
+        </div>
+
+        <!-- Location display (Read-only) -->
+        <div style="background: #f8fafc; border: 1px solid var(--border); padding: 12px 16px; border-radius: var(--radius-md); margin-bottom: 24px; font-size: 0.85rem; color: var(--text-muted);">
+          📍 <strong>Assigned Location:</strong> Maharashtra → Buldhana → XYZ Gram Panchayat (Pre-assigned)
+        </div>
+
+        <button type="submit" id="submitBtn" class="btn btn-primary btn-block" style="padding: 13px; font-size: 1rem;">
+          Submit Grievance to Gram Panchayat
+        </button>
+      </form>
+    </div>
+  </main>
+
+  <!-- Success Confirmation Modal -->
+  <div class="modal-overlay" id="complaintSuccessModal">
+    <div class="modal-card">
+      <div class="modal-header" style="background: var(--primary-light); color: var(--primary-dark);">
+        <strong style="font-size: 1.1rem;">✅ Grievance Submitted Successfully</strong>
+      </div>
+      <div class="modal-body" style="text-align: center; padding: 28px 20px;">
+        <div style="font-size: 2.8rem; margin-bottom: 12px;">📬</div>
+        <h3 style="font-size: 1.25rem; color: var(--text-main); margin-bottom: 8px;">Complaint Registered in MongoDB</h3>
+        <p style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 16px;">
+          Your grievance has been assigned an official tracking ID:
+        </p>
+        <div style="background: #f1f5f9; border: 1px dashed var(--primary); padding: 12px 20px; border-radius: var(--radius-md); display: inline-block; font-size: 1.3rem; font-weight: 800; color: var(--primary-dark); letter-spacing: 0.05em; margin-bottom: 16px;" id="modalComplaintId">
+          CMP-2026-000001
+        </div>
+        <p style="font-size: 0.85rem; color: var(--text-light); max-width: 440px; margin: 0 auto;">
+          The XYZ Gram Panchayat administration will review your complaint and initiate field inspection.
+        </p>
+      </div>
+      <div class="modal-footer" style="justify-content: center; gap: 12px;">
+        <a id="modalViewBtn" href="#" class="btn btn-primary">
+          View Complaint Details
+        </a>
+        <a href="/citizen/complaints.html" class="btn btn-outline">
+          Go to My Complaints
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer" style="padding: 24px 20px;">
+    <div style="max-width: 1200px; margin: 0 auto; text-align: center; font-size: 0.8rem; color: #64748b;">
+      XYZ Gram Panchayat • Citizen Redressal Portal • Buldhana, Maharashtra
+    </div>
+  </footer>
+
+  <script src="/citizen/js/api.js"></script>
+  <script src="/citizen/js/auth.js"></script>
+  <script src="/citizen/js/app.js"></script>
+</body>
+</html>

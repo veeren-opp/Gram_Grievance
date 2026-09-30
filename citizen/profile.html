@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Citizen Profile — GramSetu | XYZ Gram Panchayat</title>
+  <link rel="stylesheet" href="/citizen/css/style.css">
+</head>
+<body data-page="profile">
+  <div class="gov-strip"></div>
+
+  <header class="civic-topbar">
+    <div class="location-tag">
+      <span>Official Portal:</span>
+      <span class="badge-loc">Maharashtra</span>
+      <span class="badge-loc">Buldhana</span>
+      <span class="badge-loc">XYZ Gram Panchayat</span>
+    </div>
+    <div style="font-size: 0.8rem; color: var(--text-light);">
+      Resident Profile Account
+    </div>
+  </header>
+
+  <div id="systemHealthBanner" style="display: none;"></div>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="/citizen/dashboard.html" class="brand-wrapper">
+        <div class="brand-emblem">GS</div>
+        <div class="brand-text">
+          <h1>GramSetu</h1>
+          <p>Digital Grievance Redressal Portal</p>
+        </div>
+      </a>
+
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation">☰</button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/citizen/dashboard.html" class="nav-link">Dashboard</a></li>
+        <li><a href="/citizen/submit-complaint.html" class="nav-link">Submit Complaint</a></li>
+        <li><a href="/citizen/complaints.html" class="nav-link">My Complaints</a></li>
+        <li><a href="/citizen/profile.html" class="nav-link active" id="navCitizenName">Profile</a></li>
+        <li><a href="#" class="nav-link btn-danger-outline" id="navLogoutBtn">Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="main-content" style="max-width: 680px;">
+    <!-- Mandatory Read-Only Location Banner -->
+    <div class="location-notice-card">
+      <div>
+        <div class="loc-title">Registered Jurisdiction</div>
+        <div class="loc-values">
+          <span><strong>State:</strong> Maharashtra</span>
+          <span>•</span>
+          <span><strong>District:</strong> Buldhana</span>
+          <span>•</span>
+          <span><strong>Gram Panchayat:</strong> XYZ Gram Panchayat</span>
+        </div>
+      </div>
+      <div style="font-size: 0.82rem; color: var(--text-light);">
+        Permanent Jurisdiction Mapping
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="page-header" style="margin-bottom: 24px;">
+        <h2 class="page-title">Citizen Profile</h2>
+        <p class="page-subtitle">Your official registration details recorded in MongoDB</p>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 24px; padding-bottom: 18px; border-bottom: 1px solid var(--border);">
+        <div style="width: 56px; height: 56px; border-radius: 50%; background: var(--primary-light); color: var(--primary-dark); font-weight: 700; font-size: 1.5rem; display: flex; align-items: center; justify-content: center;">
+          👤
+        </div>
+        <div>
+          <h3 style="font-size: 1.25rem; color: var(--text-main);" id="profileFullName">Loading...</h3>
+          <span style="font-size: 0.85rem; color: var(--text-light);">Registered Citizen Resident</span>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px;">
+        <div class="detail-item">
+          <div class="detail-label">Registered Mobile</div>
+          <div class="detail-value" id="profileMobile">...</div>
+        </div>
+
+        <div class="detail-item">
+          <div class="detail-label">Email Address</div>
+          <div class="detail-value" id="profileEmail">...</div>
+        </div>
+
+        <div class="detail-item">
+          <div class="detail-label">Enrolled On</div>
+          <div class="detail-value" id="profileRegDate">...</div>
+        </div>
+
+        <div class="detail-item">
+          <div class="detail-label">Total Grievances Filed</div>
+          <div class="detail-value" id="profileTotalComplaints" style="color: var(--primary-dark); font-weight: 700;">0</div>
+        </div>
+      </div>
+
+      <!-- Pre-assigned Location Box -->
+      <div style="background: #f8fafc; border: 1px solid var(--border); border-radius: var(--radius-md); padding: 14px; margin-bottom: 24px;">
+        <span style="font-size: 0.75rem; text-transform: uppercase; font-weight: 700; color: var(--text-light); letter-spacing: 0.05em; display: block; margin-bottom: 6px;">
+          Civic Jurisdiction
+        </span>
+        <div style="font-size: 0.95rem; font-weight: 600; color: var(--text-main);">
+          XYZ Gram Panchayat, Buldhana District, Maharashtra
+        </div>
+        <div style="font-size: 0.8rem; color: var(--text-light); margin-top: 4px;">
+          Note: Location is fixed to the single designated panchayat jurisdiction and is not editable.
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 12px; justify-content: flex-end;">
+        <a href="/citizen/dashboard.html" class="btn btn-outline">
+          ← Back to Dashboard
+        </a>
+        <button type="button" class="btn btn-danger-outline" onclick="window.auth.logout()">
+          Sign Out
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer" style="padding: 24px 20px;">
+    <div style="max-width: 1200px; margin: 0 auto; text-align: center; font-size: 0.8rem; color: #64748b;">
+      GramSetu • XYZ Gram Panchayat, Buldhana, Maharashtra • Citizen Profile Desk
+    </div>
+  </footer>
+
+  <script src="/citizen/js/api.js"></script>
+  <script src="/citizen/js/auth.js"></script>
+  <script src="/citizen/js/app.js"></script>
+</body>
+</html>

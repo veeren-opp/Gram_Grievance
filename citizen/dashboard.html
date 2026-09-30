@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Citizen Dashboard — GramSetu | XYZ Gram Panchayat</title>
+  <link rel="stylesheet" href="/citizen/css/style.css">
+</head>
+<body data-page="dashboard">
+  <div class="gov-strip"></div>
+
+  <header class="civic-topbar">
+    <div class="location-tag">
+      <span>Official Portal:</span>
+      <span class="badge-loc">Maharashtra</span>
+      <span class="badge-loc">Buldhana</span>
+      <span class="badge-loc">XYZ Gram Panchayat</span>
+    </div>
+    <div style="font-size: 0.8rem; color: var(--text-light);">
+      Resident Services Dashboard
+    </div>
+  </header>
+
+  <div id="systemHealthBanner" style="display: none;"></div>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="/citizen/dashboard.html" class="brand-wrapper">
+        <div class="brand-emblem">GS</div>
+        <div class="brand-text">
+          <h1>GramSetu</h1>
+          <p>Digital Grievance Redressal Portal</p>
+        </div>
+      </a>
+
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation">☰</button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/citizen/dashboard.html" class="nav-link active">Dashboard</a></li>
+        <li><a href="/citizen/submit-complaint.html" class="nav-link">Submit Complaint</a></li>
+        <li><a href="/citizen/complaints.html" class="nav-link">My Complaints</a></li>
+        <li><a href="/citizen/profile.html" class="nav-link" id="navCitizenName">Profile</a></li>
+        <li><a href="#" class="nav-link btn-danger-outline" id="navLogoutBtn">Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <!-- Mandatory Read-Only Location Banner -->
+    <div class="location-notice-card">
+      <div>
+        <div class="loc-title">Designated Panchayat Jurisdiction</div>
+        <div class="loc-values">
+          <span><strong>State:</strong> Maharashtra</span>
+          <span>•</span>
+          <span><strong>District:</strong> Buldhana</span>
+          <span>•</span>
+          <span><strong>Gram Panchayat:</strong> XYZ Gram Panchayat</span>
+        </div>
+      </div>
+      <div style="font-size: 0.82rem; color: var(--text-light);">
+        All your grievances are mapped to this jurisdiction
+      </div>
+    </div>
+
+    <!-- Welcome Header & Quick Action -->
+    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-bottom: 24px;">
+      <div>
+        <h2 class="page-title">Welcome, <span id="dashUserName">Citizen</span></h2>
+        <p class="page-subtitle">
+          Registered Mobile: <strong id="dashUserMobile" style="color: var(--text-main);">...</strong> • Real-time Redressal Overview
+        </p>
+      </div>
+      <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+        <a href="/citizen/submit-complaint.html" class="btn btn-primary">
+          + Submit New Complaint
+        </a>
+        <a href="/citizen/complaints.html" class="btn btn-outline">
+          View All Complaints
+        </a>
+      </div>
+    </div>
+
+    <!-- Real MongoDB Statistics Cards -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <span class="stat-label">Total Grievances</span>
+        <span class="stat-value" id="statTotal">0</span>
+        <span class="stat-sub">Submitted to date</span>
+      </div>
+
+      <div class="stat-card" style="border-left: 4px solid #0284c7;">
+        <span class="stat-label" style="color: #0284c7;">Submitted</span>
+        <span class="stat-value" id="statSubmitted">0</span>
+        <span class="stat-sub">Awaiting review</span>
+      </div>
+
+      <div class="stat-card" style="border-left: 4px solid #7c3aed;">
+        <span class="stat-label" style="color: #7c3aed;">In Progress</span>
+        <span class="stat-value" id="statInProgress">0</span>
+        <span class="stat-sub">Under active remediation</span>
+      </div>
+
+      <div class="stat-card" style="border-left: 4px solid #16a34a;">
+        <span class="stat-label" style="color: #16a34a;">Resolved</span>
+        <span class="stat-value" id="statResolved">0</span>
+        <span class="stat-sub">Completed & verified</span>
+      </div>
+    </div>
+
+    <!-- Recent Complaints Table -->
+    <div class="card" style="padding: 20px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+        <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--text-main);">Recent Grievance Submissions</h3>
+        <a href="/citizen/complaints.html" style="font-size: 0.88rem; color: var(--primary); text-decoration: none; font-weight: 600;">View All →</a>
+      </div>
+
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Grievance Title & Location</th>
+              <th>Category</th>
+              <th>Date</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="recentComplaintsTableBody">
+            <!-- Dynamically populated from MongoDB -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Empty state -->
+      <div id="dashboardEmptyState" style="text-align: center; padding: 40px 16px; display: none;">
+        <div style="font-size: 2.2rem; margin-bottom: 8px;">📋</div>
+        <h4 style="color: var(--text-muted); margin-bottom: 8px;">No Complaints Submitted Yet</h4>
+        <p style="font-size: 0.9rem; color: var(--text-light); max-width: 420px; margin: 0 auto 16px;">
+          Have you noticed an issue in roads, water supply, street lighting, or sanitation in XYZ Gram Panchayat?
+        </p>
+        <a href="/citizen/submit-complaint.html" class="btn btn-primary">
+          Lodge Your First Complaint
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <h3>GramSetu Citizen Portal</h3>
+        <p>Direct grievance redressal system for XYZ Gram Panchayat, Buldhana, Maharashtra.</p>
+      </div>
+      <div>
+        <h4 style="color: #ffffff; font-size: 0.95rem; margin-bottom: 8px;">Quick Links</h4>
+        <ul style="list-style: none; font-size: 0.88rem; line-height: 2;">
+          <li><a href="/citizen/submit-complaint.html" style="color: #94a3b8; text-decoration: none;">Submit Complaint</a></li>
+          <li><a href="/citizen/complaints.html" style="color: #94a3b8; text-decoration: none;">My Complaints</a></li>
+          <li><a href="/citizen/profile.html" style="color: #94a3b8; text-decoration: none;">My Profile</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 XYZ Gram Panchayat, Buldhana, Maharashtra.</div>
+      <div>Database: MongoDB Atlas • Real-time Redressal</div>
+    </div>
+  </footer>
+
+  <script src="/citizen/js/api.js"></script>
+  <script src="/citizen/js/auth.js"></script>
+  <script src="/citizen/js/app.js"></script>
+</body>
+</html>

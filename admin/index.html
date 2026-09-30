@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login — GramSetu | XYZ Gram Panchayat</title>
+  <link rel="stylesheet" href="/admin/css/style.css">
+</head>
+<body data-admin-page="login">
+  <div class="gov-strip"></div>
+
+  <header class="admin-header">
+    <div class="admin-header-container">
+      <div class="admin-brand">
+        <span style="font-weight: 800; font-size: 1.2rem; letter-spacing: -0.02em;">GramSetu</span>
+        <span class="admin-badge">Officer Portal</span>
+      </div>
+      <div>
+        <a href="/citizen/index.html" style="color: #94a3b8; font-size: 0.85rem; text-decoration: none;">
+          ← Switch to Citizen Portal
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <div id="adminHealthBanner" style="display: none;"></div>
+
+  <main class="admin-main" style="max-width: 440px; margin-top: 40px;">
+    <div class="card" style="border-top: 4px solid var(--primary-dark);">
+      <div style="text-align: center; margin-bottom: 24px;">
+        <div style="font-size: 2.2rem; margin-bottom: 6px;">🏛️</div>
+        <h2 style="font-size: 1.45rem; font-weight: 700; color: var(--text-main);">Panchayat Administration</h2>
+        <p style="font-size: 0.85rem; color: var(--text-light); margin-top: 4px;">
+          XYZ Gram Panchayat, Buldhana District, Maharashtra
+        </p>
+      </div>
+
+      <div id="adminLoginAlert" class="alert alert-danger" style="display: none;"></div>
+
+      <form id="adminLoginForm">
+        <div class="form-group">
+          <label class="form-label" for="username">Officer Name, Mobile, or Username</label>
+          <input type="text" id="username" name="username" class="form-control" placeholder="e.g. Registered Mobile or Sarpanch / Gram Sevak" required autocomplete="username">
+          <div style="font-size: 0.78rem; color: var(--text-light); margin-top: 4px;">
+            Enter your registered official mobile or any administrative username.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="password">Password or Master Key</label>
+          <input type="password" id="password" name="password" class="form-control" placeholder="Enter your password or master key" required autocomplete="current-password">
+          <div style="font-size: 0.78rem; color: var(--text-light); margin-top: 4px;">
+            Personal officer password or Master Security Key (<code>GramSetu@2026</code>)
+          </div>
+        </div>
+
+        <button type="submit" id="adminLoginSubmitBtn" class="btn btn-primary btn-block" style="padding: 11px; margin-top: 10px;">
+          Access Administration Console
+        </button>
+      </form>
+
+      <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--text-muted); text-align: center;">
+        Need to add an officer? <a href="/admin/register.html" style="color: var(--primary); font-weight: 700; text-decoration: none;">Register New Panchayat Officer →</a>
+      </div>
+
+      <div style="margin-top: 14px; font-size: 0.78rem; color: var(--text-light); text-align: center;">
+        Jurisdiction: <strong>XYZ Gram Panchayat, Buldhana, Maharashtra</strong>
+      </div>
+    </div>
+  </main>
+
+  <footer class="admin-footer" style="padding: 16px 20px; text-align: center;">
+    <div style="font-size: 0.78rem; color: #64748b; margin-bottom: 6px;">
+      GramSetu Administration Portal • Restricted Access for Authorized Gram Panchayat Officials
+    </div>
+    <div style="font-size: 0.76rem;">
+      <a href="/api/download/zip" download="gramsetu-panchayat-portal.zip" style="color: #38bdf8; text-decoration: none; font-weight: 600;">
+        📥 Download Full Project Source Code (.ZIP)
+      </a>
+    </div>
+  </footer>
+
+  <script src="/admin/js/api.js"></script>
+  <script src="/admin/js/auth.js"></script>
+  <script src="/admin/js/app.js"></script>
+</body>
+</html>

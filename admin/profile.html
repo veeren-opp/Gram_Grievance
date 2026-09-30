@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Profile — GramSetu | XYZ Gram Panchayat</title>
+  <link rel="stylesheet" href="/admin/css/style.css">
+</head>
+<body data-admin-page="profile">
+  <div class="gov-strip"></div>
+
+  <header class="admin-header">
+    <div class="admin-header-container">
+      <div class="admin-brand">
+        <span style="font-weight: 800; font-size: 1.2rem; letter-spacing: -0.02em;">GramSetu</span>
+        <span class="admin-badge">Admin Desk</span>
+      </div>
+
+      <nav>
+        <ul class="admin-nav">
+          <li><a href="/admin/dashboard.html" class="admin-nav-link">Dashboard</a></li>
+          <li><a href="/admin/complaints.html" class="admin-nav-link">Complaints Ledger</a></li>
+          <li><a href="/admin/profile.html" class="admin-nav-link active">Panchayat Office</a></li>
+          <li><button class="btn-admin-logout" id="adminLogoutBtn">Logout</button></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div id="adminHealthBanner" style="display: none;"></div>
+
+  <main class="admin-main" style="max-width: 680px;">
+    <div class="card" style="border-top: 4px solid var(--primary-dark);">
+      <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid var(--border);">
+        <div style="width: 54px; height: 54px; background: var(--primary-light); color: var(--primary-dark); font-size: 1.6rem; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center;">
+          🏛️
+        </div>
+        <div>
+          <h2 style="font-size: 1.35rem; color: var(--text-main); font-weight: 700;" id="adminProfileName">Panchayat Official</h2>
+          <span style="font-size: 0.85rem; color: var(--text-light);">Authorized Municipal Administrator</span>
+        </div>
+      </div>
+
+      <div style="margin-bottom: 20px;">
+        <div class="detail-label">Designated Gram Panchayat</div>
+        <div class="detail-value" style="font-size: 1.05rem; font-weight: 700; color: var(--primary-dark);">
+          XYZ Gram Panchayat
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+          <div>
+            <div class="detail-label">District</div>
+            <div class="detail-value">Buldhana</div>
+          </div>
+          <div>
+            <div class="detail-label">State</div>
+            <div class="detail-value">Maharashtra</div>
+          </div>
+        </div>
+
+        <div class="detail-label">Security Authorization Level</div>
+        <div class="detail-value">Full Grievance Redressal & Review Privileges (JWT Protected)</div>
+      </div>
+
+      <div style="background: #f8fafc; border: 1px solid var(--border); padding: 14px; border-radius: var(--radius-md); margin-bottom: 20px; font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">
+        <strong>Official Mandate:</strong> As an authorized officer of XYZ Gram Panchayat, all grievance status updates and remarks entered into this portal are synchronized directly to MongoDB Atlas and visible to residents.
+      </div>
+
+      <div style="display: flex; justify-content: flex-end; gap: 12px;">
+        <a href="/admin/dashboard.html" class="btn btn-outline">
+          ← Back to Dashboard
+        </a>
+        <button type="button" class="btn btn-admin-logout" style="border: 1px solid #ef4444; color: #ef4444;" onclick="window.adminAuth.logout()">
+          End Official Session
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <footer class="admin-footer">
+    <div class="admin-footer-container">
+      <div>Office of XYZ Gram Panchayat, Buldhana, Maharashtra</div>
+      <div>Administrative Control Console</div>
+    </div>
+  </footer>
+
+  <script src="/admin/js/api.js"></script>
+  <script src="/admin/js/auth.js"></script>
+  <script src="/admin/js/app.js"></script>
+</body>
+</html>

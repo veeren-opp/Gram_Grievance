@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grievance Registry — GramSetu Admin | XYZ Gram Panchayat</title>
+  <link rel="stylesheet" href="/admin/css/style.css">
+</head>
+<body data-admin-page="complaints">
+  <div class="gov-strip"></div>
+
+  <header class="admin-header">
+    <div class="admin-header-container">
+      <div class="admin-brand">
+        <span style="font-weight: 800; font-size: 1.2rem; letter-spacing: -0.02em;">GramSetu</span>
+        <span class="admin-badge">Admin Desk</span>
+      </div>
+
+      <nav>
+        <ul class="admin-nav">
+          <li><a href="/admin/dashboard.html" class="admin-nav-link">Dashboard</a></li>
+          <li><a href="/admin/complaints.html" class="admin-nav-link active">Complaints Ledger</a></li>
+          <li><a href="/admin/profile.html" class="admin-nav-link">Panchayat Office</a></li>
+          <li><button class="btn-admin-logout" id="adminLogoutBtn">Logout</button></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div id="adminHealthBanner" style="display: none;"></div>
+
+  <main class="admin-main">
+    <div class="admin-subbar">
+      <div>
+        <span class="loc-title">Jurisdiction:</span>
+        <span class="loc-val">XYZ Gram Panchayat, Buldhana District, Maharashtra</span>
+      </div>
+      <div>
+        <span id="adminComplaintsCount" style="font-size: 0.82rem; background: #e2e8f0; padding: 3px 8px; border-radius: 4px; font-weight: 700; color: #1e293b;">
+          Loading records...
+        </span>
+      </div>
+    </div>
+
+    <!-- Header & Search Controls -->
+    <div style="margin-bottom: 20px;">
+      <h2 style="font-size: 1.5rem; font-weight: 700; color: var(--text-main); margin-bottom: 14px;">Official Grievance Registry</h2>
+      
+      <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center; background: #ffffff; padding: 16px; border: 1px solid var(--border); border-radius: var(--radius-lg);">
+        <!-- Search box -->
+        <div style="flex: 2; min-width: 240px;">
+          <input type="text" id="adminSearchInput" class="form-control" placeholder="Search by Complaint ID, Title, Citizen Name, or Mobile...">
+        </div>
+
+        <!-- Status Filter -->
+        <div style="flex: 1; min-width: 160px;">
+          <select id="adminStatusFilter" class="form-control">
+            <option value="">All Statuses</option>
+            <option value="Submitted">Submitted</option>
+            <option value="Under Review">Under Review</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Resolved">Resolved</option>
+            <option value="Rejected">Rejected</option>
+          </select>
+        </div>
+
+        <!-- Category Filter -->
+        <div style="flex: 1; min-width: 160px;">
+          <select id="adminCategoryFilter" class="form-control">
+            <option value="">All Categories</option>
+            <option value="Roads">Roads</option>
+            <option value="Street Lights">Street Lights</option>
+            <option value="Water Supply">Water Supply</option>
+            <option value="Sanitation">Sanitation</option>
+            <option value="Drainage">Drainage</option>
+            <option value="Waste Management">Waste Management</option>
+            <option value="Electricity">Electricity</option>
+            <option value="Public Infrastructure">Public Infrastructure</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Grievance Table -->
+    <div class="card" style="padding: 16px;">
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Complaint ID</th>
+              <th>Citizen Details</th>
+              <th>Title & Landmark</th>
+              <th>Category</th>
+              <th>Lodged Date</th>
+              <th>Status</th>
+              <th>Review</th>
+            </tr>
+          </thead>
+          <tbody id="adminComplaintsTableBody">
+            <!-- Dynamically populated from MongoDB -->
+          </tbody>
+        </table>
+      </div>
+
+      <div id="adminComplaintsEmptyState" style="text-align: center; padding: 48px 16px; display: none;">
+        <div style="font-size: 2.2rem; margin-bottom: 8px;">📂</div>
+        <p style="color: var(--text-muted);">No grievance records found matching the active search or filters.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="admin-footer">
+    <div class="admin-footer-container">
+      <div>Grievance Registry • XYZ Gram Panchayat, Buldhana, Maharashtra</div>
+      <div>Authorized Official Operations</div>
+    </div>
+  </footer>
+
+  <script src="/admin/js/api.js"></script>
+  <script src="/admin/js/auth.js"></script>
+  <script src="/admin/js/app.js"></script>
+</body>
+</html>

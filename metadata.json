@@ -1,0 +1,6 @@
+{
+  "name": "GramSetu — Digital Gram Panchayat Grievance Portal",
+  "description": "Official digital grievance redressal portal for citizens and administration of XYZ Gram Panchayat, Buldhana, Maharashtra.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

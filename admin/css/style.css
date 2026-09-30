@@ -1,0 +1,441 @@
+/* ==========================================================================
+   GramSetu — Administration Portal Stylesheet
+   Authorized Municipal Control Console
+   Jurisdiction: XYZ Gram Panchayat, Buldhana, Maharashtra
+   ========================================================================== */
+
+:root {
+  --admin-nav-bg: #0f172a;
+  --admin-nav-text: #f1f5f9;
+  --primary: #059669;
+  --primary-dark: #047857;
+  --primary-light: #ecfdf5;
+  --primary-hover: #10b981;
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  --text-light: #64748b;
+  --border: #e2e8f0;
+  --border-light: #f1f5f9;
+  --bg-page: #f8fafc;
+  --bg-card: #ffffff;
+  --danger: #dc2626;
+  --danger-light: #fee2e2;
+  --warning: #d97706;
+  --warning-light: #fef3c7;
+  --info: #0284c7;
+  --info-light: #e0f2fe;
+  --success: #16a34a;
+  --success-light: #dcfce7;
+  --purple: #7c3aed;
+  --purple-light: #f3e8ff;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-page);
+  color: var(--text-main);
+  line-height: 1.5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Administrative Top Ribbon */
+.gov-strip {
+  height: 4px;
+  background: linear-gradient(90deg, #ff9933 0%, #ff9933 33.3%, #ffffff 33.3%, #ffffff 66.6%, #138808 66.6%, #138808 100%);
+  width: 100%;
+}
+
+.admin-header {
+  background-color: var(--admin-nav-bg);
+  color: var(--admin-nav-text);
+  border-bottom: 1px solid #1e293b;
+  padding: 12px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.admin-header-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.admin-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.admin-badge {
+  background-color: #047857;
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.admin-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+}
+
+.admin-nav-link {
+  color: #cbd5e1;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: var(--radius-md);
+  transition: all 0.15s ease;
+}
+
+.admin-nav-link:hover,
+.admin-nav-link.active {
+  color: #ffffff;
+  background-color: #1e293b;
+}
+
+.btn-admin-logout {
+  background: transparent;
+  color: #f87171;
+  border: 1px solid #334155;
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-admin-logout:hover {
+  background-color: rgba(239, 68, 68, 0.15);
+  border-color: #ef4444;
+}
+
+/* Layout */
+.admin-main {
+  flex: 1;
+  max-width: 1300px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 24px 20px 48px;
+}
+
+/* Sub-bar for Panchayat Jurisdiction */
+.admin-subbar {
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--primary-dark);
+  padding: 10px 18px;
+  border-radius: var(--radius-md);
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 0.88rem;
+}
+
+.admin-subbar .loc-title {
+  color: var(--text-light);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+}
+
+.admin-subbar .loc-val {
+  color: var(--text-main);
+  font-weight: 700;
+}
+
+/* Metric Statistics */
+.admin-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.admin-stat-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 18px;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.admin-stat-card.total { border-top: 4px solid var(--text-main); }
+.admin-stat-card.submitted { border-top: 4px solid var(--info); }
+.admin-stat-card.under-review { border-top: 4px solid var(--warning); }
+.admin-stat-card.in-progress { border-top: 4px solid var(--purple); }
+.admin-stat-card.resolved { border-top: 4px solid var(--success); }
+.admin-stat-card.rejected { border-top: 4px solid var(--danger); }
+
+.admin-stat-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--text-light);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.admin-stat-num {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-top: 4px;
+  line-height: 1;
+}
+
+/* Cards & Surfaces */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Forms */
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 6px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 9px 12px;
+  font-size: 0.92rem;
+  font-family: inherit;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background-color: #ffffff;
+  color: var(--text-main);
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.15);
+}
+
+/* Tables */
+.table-container {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--bg-card);
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.data-table th {
+  background-color: #f8fafc;
+  padding: 12px 14px;
+  font-weight: 600;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border);
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+}
+
+.data-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border-light);
+  color: var(--text-main);
+  vertical-align: middle;
+}
+
+.data-table tr:hover td {
+  background-color: #f8fafc;
+}
+
+/* Status Indicators (Zero-Pill Discipline) */
+.status-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.status-submitted .status-dot { background-color: var(--info); }
+.status-submitted { color: var(--info); }
+
+.status-under-review .status-dot { background-color: var(--warning); }
+.status-under-review { color: var(--warning); }
+
+.status-in-progress .status-dot { background-color: var(--purple); }
+.status-in-progress { color: var(--purple); }
+
+.status-resolved .status-dot { background-color: var(--success); }
+.status-resolved { color: var(--success); }
+
+.status-rejected .status-dot { background-color: var(--danger); }
+.status-rejected { color: var(--danger); }
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.15s ease;
+  border: 1px solid transparent;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-dark);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.btn-outline:hover {
+  background-color: var(--primary-light);
+}
+
+.btn-block {
+  width: 100%;
+}
+
+/* Alerts */
+.alert {
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+}
+
+.alert-danger {
+  background-color: var(--danger-light);
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+
+.alert-success {
+  background-color: var(--success-light);
+  color: #166534;
+  border: 1px solid #bbf7d0;
+}
+
+.alert-warning {
+  background-color: var(--warning-light);
+  color: #92400e;
+  border: 1px solid #fde68a;
+}
+
+/* Detail Dossier */
+.admin-dossier-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+}
+
+.detail-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--text-light);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin-bottom: 4px;
+}
+
+.detail-value {
+  font-size: 0.95rem;
+  color: var(--text-main);
+  font-weight: 500;
+  margin-bottom: 14px;
+}
+
+/* Footer */
+.admin-footer {
+  background-color: var(--admin-nav-bg);
+  color: #94a3b8;
+  padding: 24px 20px;
+  margin-top: auto;
+  font-size: 0.82rem;
+  border-top: 1px solid #1e293b;
+}
+
+.admin-footer-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+@media (max-width: 768px) {
+  .admin-dossier-grid {
+    grid-template-columns: 1fr;
+  }
+  .admin-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
